@@ -6,9 +6,8 @@ let playerScore = 0;
 let computerScore = 0;
 
 roll.onclick = function () {
-    if (playerScore < 5 & computerScore < 5) {
-        game ();
-    }else {
+    game()
+    if (playerScore == 5 | computerScore == 5) {
         console.log(gameOver());
         reset();
     }
