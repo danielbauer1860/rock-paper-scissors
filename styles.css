@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+body {
+    background: #FEAC5E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "playerScore . compScore"
+    ". selectionContainer ."
+    ". messages ."
+    ;
+}
+
+.selectionContainer {
+    grid-area: selectionContainer;
+    display:flex;
+    justify-content: center;
+}
+
+.selectionButton {
+    height: 50px;
+    width: 80px;
+    background-color: lightcyan;
+    color: black;
+    border-width: 0px;
+    box-shadow: 0 0 10px  black;
+    margin: 10px;
+    align-self: center;
+}
+
+.selectionButton:hover {
+    margin: 0px;
+    height: 60px;
+    width: 100px;
+    background-color: lightskyblue;
+}
+
+#playerScore {
+    grid-area: playerScore;
+    text-align: start;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+#compScore {
+    grid-area: compScore;
+    text-align: end;
+    margin-right: 40px;
+    margin-top: 20px;
+}
+
+.messages {
+    grid-area: messages;
+}
+
+#resultMessage {
+    height: 50px;
+    text-align: center;
+    
+}
+
+#gameOverMessage {
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+}

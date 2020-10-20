@@ -1,25 +1,57 @@
-const roll = document.getElementById("roll");
-const playerPicker = document.getElementById("playerPicker");
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+const resultMessage = document.getElementById("resultMessage");
+const gameOverMessage = document.getElementById("gameOverMessage");
+const playerScoreDisplay = document.getElementById("playerScore");
+const compScoreDisplay = document.getElementById("compScore");
 let playerSelection;
 let computerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
-roll.onclick = function () {
-    game()
+rockButton.onclick = function () {
+    game("rock");
     if (playerScore == 5 | computerScore == 5) {
-        console.log(gameOver());
+        gameOverMessage.innerText = gameOver();
         reset();
+    }else {
+        gameOverMessage.innerText ="";
     }
 }
 
-function game() {
-    playerSelection = playerPicker.value;
+paperButton.onclick = function () {
+    game("paper");
+    if (playerScore == 5 | computerScore == 5) {
+        gameOverMessage.innerText = gameOver();
+        reset();
+    } else {
+        gameOverMessage.innerText ="";
+    }
+}
+
+
+scissorsButton.onclick = function () {
+    game("scissors");
+    if (playerScore == 5 | computerScore == 5) {
+        gameOverMessage.innerText = gameOver();
+        reset();
+    } else {
+        gameOverMessage.innerText ="";
+    }
+}
+
+function game(playerSelection) {
     computerSelection = computerPlay();
-    console.log("Player selected " + playerSelection.toLowerCase());
-    console.log("Computer selected " + computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
-    console.log ("Player: " + playerScore + " Computer: "+ computerScore);
+    resultMessage.innerText = `Player selected ${playerSelection.toLowerCase()} 
+    Computer selected  ${computerSelection} 
+${playRound(playerSelection, computerSelection)}`;
+    updateScore();
+}
+
+function updateScore(){
+    playerScoreDisplay.innerText = "Player: " + playerScore;
+    compScoreDisplay.innerText = "Computer: " + computerScore;
 }
 
 function reset() {
@@ -49,7 +81,7 @@ function computerPlay (){
 
 function playRound (playerSelection, computerSelection) {
     if (playerSelection.toLowerCase() == computerSelection){
-        return "It's a tie";
+        return "It's a tie!";
     } 
     else if (playerSelection.toLowerCase() == "scissors" & computerSelection == "rock") {
         computerScore++;
